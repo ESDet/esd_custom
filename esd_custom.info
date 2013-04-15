@@ -1,0 +1,4 @@
+name = ESD customizations
+description = Do special stuff for excellentschoolsdetroit.org
+core = 7.x
+package = Work Dept

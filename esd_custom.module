@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Implements hook_block_view_MODULE_DELTA_alter
+ *
+ * The mailchimp_lists module provides a form title that acts as a block title.
+ * Change behavior to act like a block title, so site admins can set the title
+ * as needed.
+ */
+function esd_custom_block_view_mailchimp_lists_get_email_updates_alter(&$data, $block) {
+  $module = 'mailchimp_lists';
+  $wrapper_key = 'mailchimp_get_email_updates';
+  // If you don't want a block title, don't show the title!
+  if ($block->title == '<none>') {
+    unset($data['content'][$module][$wrapper_key]['title']);
+  }
+  // Otherwise, show the desired title.
+  else if ($block->title !== '') {
+    $data['content'][$module][$wrapper_key]['title']['#markup'] = $block->title;
+    $block->title = '<none>';
+  }
+  // If you want the defailt, then it's already handled in that title item
+  else {
+    $block->title = '<none>';
+  }
+}
+
