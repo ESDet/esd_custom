@@ -33,3 +33,12 @@ function esd_custom_block_view_mailchimp_lists_get_email_updates_alter(&$data, $
   }
 }
 
+/**
+ * Implements hook_form_alter().
+ */
+function esd_custom_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'mailchimp_lists_user_subscribe_form_get_email_updates') {
+    $form['submit']['#value'] = t('Subscribe');
+  }
+
+}
