@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Implements hook_language_types_info_alter().
+ */
+function esd_custom_language_types_info_alter(&$language_types) {
+  //Allow setting the Content Language detection method.
+  unset($language_types[LANGUAGE_TYPE_CONTENT]['fixed']);
+}
+
+/**
  * Implements hook_block_view_MODULE_DELTA_alter
  *
  * The mailchimp_lists module provides a form title that acts as a block title.
